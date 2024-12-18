@@ -14,7 +14,7 @@ print(args)
 dataset = args.dataset
 
 # Set your own path to the datasets.
-path = osp.join("/mnt/raid/fanruibo/g_dataset/", args.dataset + ".npz") #4090
+path = osp.join("/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/dtc_datasets/", args.dataset + ".npz") #4090
 matrix = DTC_dataset(path)
 num_rows = matrix.num_nodes
 num_nnz = matrix.num_edges

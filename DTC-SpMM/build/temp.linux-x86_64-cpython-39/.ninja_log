@@ -1,0 +1,5 @@
+# ninja log v5
+0	25243	1731002885	/dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/build/temp.linux-x86_64-cpython-39/DTCSpMM.o	c5481a019d4207dd
+0	64620	1731002924	/dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/build/temp.linux-x86_64-cpython-39/DTCSpMM_kernel.o	89b1a1bac0b07de
+178	68326	1731021748	/dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/build/temp.linux-x86_64-cpython-39/DTCSpMM_kernel.o	3e8eaac244b521d9
+254	59949	1732529326	/dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/build/temp.linux-x86_64-cpython-39/DTCSpMM_kernel.o	3e8eaac244b521d9

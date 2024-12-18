@@ -14,6 +14,7 @@ class DTC_dataset(torch.nn.Module):
         super(DTC_dataset, self).__init__()
         self.nodes = set()
         self.num_nodes = 0
+        # self.num_features = 0    # Added to handle non-square matrices if applicable
         self.edge_index = None
         self.verbose_flag = verbose
         self.init_sparse(path)

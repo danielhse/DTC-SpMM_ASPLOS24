@@ -1,0 +1,34 @@
+ninja_required_version = 1.3
+cxx = /opt/apps/gcc/11.2.0/bin/g++
+nvcc = /opt/apps/cuda/11.7.1/bin/nvcc
+
+cflags = -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /data/homezvol3/hsud8/.conda/envs/DTCSpMM/include -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/include -fPIC -O2 -isystem /data/homezvol3/hsud8/.conda/envs/DTCSpMM/include -I/opt/apps/gcc/11.2.0/include -I/opt/apps/gcc/11.2.0/lib/gcc/x86_64-pc-linux-gnu/11.2.0/plugin/include -fPIC -I/pub/hsud8/DTC-SpMM_ASPLOS24/third_party/sputnik/ -I/pub/hsud8/DTC-SpMM_ASPLOS24/third_party/glog/build/glog -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include/TH -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include/THC -I/opt/apps/cuda/11.7.1/include -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/include/python3.9 -c
+post_cflags = -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=DTCSpMM -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+cuda_cflags = -I/pub/hsud8/DTC-SpMM_ASPLOS24/third_party/sputnik/ -I/pub/hsud8/DTC-SpMM_ASPLOS24/third_party/glog/build/glog -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include/TH -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/lib/python3.9/site-packages/torch/include/THC -I/opt/apps/cuda/11.7.1/include -I/data/homezvol3/hsud8/.conda/envs/DTCSpMM/include/python3.9 -c
+cuda_post_cflags = -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=DTCSpMM -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_80,code=sm_80 -ccbin /opt/apps/gcc/11.2.0/bin/gcc -std=c++17
+cuda_dlink_post_cflags = 
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  depfile = $out.d
+  deps = gcc
+  command = $nvcc  $cuda_cflags -c $in -o $out $cuda_post_cflags
+
+
+
+
+
+build /dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/build/temp.linux-x86_64-cpython-39/DTCSpMM.o: compile /dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/DTCSpMM.cpp
+build /dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/build/temp.linux-x86_64-cpython-39/DTCSpMM_kernel.o: cuda_compile /dfs6/pub/hsud8/DTC-SpMM_ASPLOS24/DTC-SpMM/DTCSpMM_kernel.cu
+
+
+
+
+
+
+

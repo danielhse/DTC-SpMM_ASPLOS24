@@ -15,7 +15,7 @@
 #include <torch/extension.h>
 #include <vector>
 #define WPB 8
-#define EXE_TIME 1000
+#define EXE_TIME 1
 #define NUM_SM_GPU 128 // 4090
 #define USE_SPUTNIK
 using namespace nvcuda;

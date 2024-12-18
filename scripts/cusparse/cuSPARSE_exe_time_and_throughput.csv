@@ -1,0 +1,8 @@
+cop20k_A,128,cop20k_A,128,cop20k_A,128,cop20k_A,128,cop20k_A,128,cusparse-1:,53.1079,12.6503,
+cop20k_A,256,cusparse-1:,54.2952,24.7473,
+cop20k_A,512,cusparse-1:,54.8336,49.0085,
+cop20k_A,128,cop20k_A,128,cop20k_A,128,cusparse-1:,87.2763,7.69772,
+cop20k_A,256,cusparse-1:,90.6832,14.8171,
+cop20k_A,512,cop20k_A,128,cop20k_A,128,cusparse-1:,54.2884,12.3752,
+cop20k_A,256,cusparse-1:,53.8778,24.939,
+cop20k_A,512,cusparse-1:,57.4618,46.767,
